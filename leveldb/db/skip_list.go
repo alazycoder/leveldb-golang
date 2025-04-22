@@ -18,15 +18,15 @@ const (
 
 type SkipList[T KeyTypeSet] struct {
 	rnd            rand.Source
-	cmp            Compartor[T]
+	cmp            Comparator[T]
 	head           *SkipListNode[T]
 	_currentHeight int32
 }
 
-func NewSkipList[T KeyTypeSet](compartor Compartor[T]) *SkipList[T] {
+func NewSkipList[T KeyTypeSet](comparator Comparator[T]) *SkipList[T] {
 	return &SkipList[T]{
 		rnd:            rand.NewSource(time.Now().UnixNano()),
-		cmp:            compartor,
+		cmp:            comparator,
 		head:           NewSkipListNode[T](skipListMaxHeight, nil),
 		_currentHeight: 1,
 	}

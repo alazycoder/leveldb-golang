@@ -12,7 +12,7 @@ import (
 )
 
 func TestEmptySkipList(t *testing.T) {
-	list := NewSkipList[uint64](&_IntCompartor[uint64]{})
+	list := NewSkipList[uint64](&_IntComparator[uint64]{})
 
 	key := uint64(10)
 	assert.Equal(t, false, list.Contains(&key))
@@ -38,7 +38,7 @@ func TestInsertAndLookup(t *testing.T) {
 	rnd := rand.NewSource(1000)
 	m := make(map[uint64]bool)
 
-	list := NewSkipList[uint64](&_IntCompartor[uint64]{})
+	list := NewSkipList[uint64](&_IntComparator[uint64]{})
 	for i := 0; i < N; i++ {
 		key := uint64(rnd.Int63() % int64(R))
 		if !m[key] {
@@ -213,7 +213,7 @@ func NewConcurrentTest(t *testing.T) *ConcurrentTest {
 	return &ConcurrentTest{
 		t:        t,
 		genState: NewGenerationState(),
-		list:     NewSkipList[uint64](&_IntCompartor[uint64]{}),
+		list:     NewSkipList[uint64](&_IntComparator[uint64]{}),
 	}
 }
 
