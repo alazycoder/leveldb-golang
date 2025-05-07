@@ -37,6 +37,14 @@ func DecodeFixedUint64(data []byte) uint64 {
 	return binary.LittleEndian.Uint64(data)
 }
 
+func EncodeFixedUint32(data []byte, value uint32) {
+	binary.LittleEndian.PutUint32(data, value)
+}
+
+func DecodeFixedUint32(data []byte) uint32 {
+	return binary.LittleEndian.Uint32(data)
+}
+
 func VarIntLength(value uint64) uint32 {
 	length := uint32(1)
 	for value >= 128 {
